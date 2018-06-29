@@ -1,0 +1,23 @@
+function CellTrackFluorescenceStretchedRoofedPlotter()
+
+cd('F:\MicroscopyData\20180123 FUCCI new polyclonal single cells mTeSR vs E8 plus stem beads\');
+csvfiles = dir('**\*Green*.csv');
+figure;
+hold on
+xlim([0 25])
+ylim([0 1.2])
+xlabel('Time (Hours)')
+ylabel('Roofed Fluorescence Value')
+length = zeros(numel(csvfiles),1);
+i = 1;
+
+for file = csvfiles'
+    table = readtable(file.name);
+    %scale time
+    coordValues = table(:,{'X' 'Y'});
+    shiftCoords = coordValues;
+    displacement = coordValues - lag(coordValues);
+    displacement
+
+end
+end
